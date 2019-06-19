@@ -1,11 +1,15 @@
 import React,{ Component} from 'react'
+import DatePicker from "react-datepicker2"
 
 
 class Reservation extends Component {
     render() {
-        return (
+        return (<div>
             <div className="reservation">
-               <h1>Reservation</h1> 
+               
+            </div>
+            Reservation
+            
             </div>
         )
     }
