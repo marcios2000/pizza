@@ -7,6 +7,7 @@ import Home from './components/Home'
 import Reservation from './components/Reservation'
 import Contact from './components/Contact'
 import OrderOnline from "./components/Orderonline";
+import Products from './components/products'
 
 
 
@@ -19,6 +20,7 @@ export default (
         <Route exact path='/reservation' component={Reservation} />
         <Route exact path='/contact' component={Contact} />
         <Route exact path='/orderonline' component={OrderOnline} />
+        <Route exact path='/products' component={Products} />
 
 
 

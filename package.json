@@ -28,10 +28,8 @@
     "redux": "^4.0.1"
   },
   "scripts": {
-    "start": "node index.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    
     "server": "nodemon index.js",
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",

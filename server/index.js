@@ -4,12 +4,26 @@ const nodemailer = require('nodemailer')
 const massive = require('massive');
 require ('dotenv').config();
 const session = require('express-session');
+const authController = require('./controllers/authController')
 
 const app = express();
 
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}))
+
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    saveUninitialized: false,
+    resave: false,
+    cookie: {
+        maxAge: 1000 * 60 * 60 * 24 * 7
+    }
+}))
+
+app.post('/auth/register', authController.register);
+app.post('/auth/login', authController.login)
+app.get('/auth/logout', authController.logout)
 
 app.post('/api/form', (req, res) => {
     nodemailer.createTestAccount((err, account) => {
@@ -48,17 +62,9 @@ app.post('/api/form', (req, res) => {
            
         })
     })  
-    res.sendStatus(200)
+    res.sendtatus(200)
 })
 
-app.use(session({
-    secret: process.env.SESSION_SECRET,
-    saveUninitialized: false,
-    resave: false,
-    cookie: {
-        maxAge: 1000 * 60 * 60 * 24 * 7
-    }
-}))
 
 massive(process.env.CONNECTION_STRING).then(db => {
     app.set('db', db);
