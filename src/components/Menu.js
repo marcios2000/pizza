@@ -9,8 +9,10 @@ class Menu extends Component {
             <div className='menu'>
                
             </div>
+            <div >
             <h1 ><img src='https://pizzaplace2000.s3.us-east-2.amazonaws.com/menu.png' alt="" /></h1> 
-            </div>
+           </div> 
+           </div>
         )
     }
 }

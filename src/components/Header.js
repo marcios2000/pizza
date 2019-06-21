@@ -68,7 +68,7 @@ export default class Header extends Component {
     const { user } = this.props;
     return (
         <div className="Header">
-        {this.state.loggedin && <Redirect to="/products" />}
+        {/* {this.state.loggedin && <Redirect to="/products" />} */}
         <div className="title">DEV PIZZA</div>
         {user.username ? (
           <div className="welcomeMessage">

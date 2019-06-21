@@ -34,7 +34,10 @@ class Contact extends Component {
         
     }
     render() {
-        return (
+        return (<div>
+            <div className="gallery">
+
+            </div>
         <div className='contact'>
         <div><h4>We Would Love To Hear From You!
         Filling out this form will only take a few minutes. Let us know how we can help!</h4>
@@ -74,6 +77,7 @@ class Contact extends Component {
 
                 <Button>Submit</Button>
             </Form>
+            </div>
             </div>
             </div>
         )

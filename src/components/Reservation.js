@@ -1,5 +1,7 @@
 import React,{ Component} from 'react'
 import DatePicker from "react-datepicker2"
+import Products from './products';
+import Food from './Food/Food';
 
 
 class Reservation extends Component {
@@ -8,7 +10,7 @@ class Reservation extends Component {
             <div className="reservation">
                
             </div>
-            Reservation
+           <Food />
             
             </div>
         )
