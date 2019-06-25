@@ -1,10 +1,10 @@
 module.exports = {
     create: (req, res, next) => {
         const dbI = req.app.get("db")
-        const {name, description, price, image_url} = req.body;
+        const {name , price, image} = req.body;
     
     
-        dbI.create_product([ name, description, price, image_url])
+        dbI.create_product([ name , price, image])
         .then( () => res.sendStatus(200))
         .catch(error => {
             res.status(500).send({errorMessage: "Something went wrong"})

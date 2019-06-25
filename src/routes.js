@@ -11,6 +11,8 @@ import Products from './components/products'
 
 
 
+
+
 export default (
     <Switch>
         <Route exact path='/register' component={Register} />
@@ -21,8 +23,8 @@ export default (
         <Route exact path='/contact' component={Contact} />
         <Route exact path='/orderonline' component={OrderOnline} />
         <Route exact path='/products' component={Products} />
-
-
+       
+        
 
     </Switch>
 )

@@ -6,12 +6,23 @@ require ('dotenv').config();
 const session = require('express-session');
 const authController = require('./controllers/authController')
 const products_controller = require("./controllers/products_controller")
+const cors = require('cors')
+const auth = require('./middleware/authMiddleware')
 
 const app = express();
-
+app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}))
+
+// app.use(session({
+//     secret: process.env.SESSION_SECRET,
+//     saveUninitialized: false,
+//     resave: true
+    
+// }))
+
+
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
@@ -25,6 +36,9 @@ app.use(session({
 app.post('/auth/register', authController.register);
 app.post('/auth/login', authController.login)
 app.get('/auth/logout', authController.logout)
+
+
+app.get('')
 
 app.post('/api/form', (req, res) => {
     nodemailer.createTestAccount((err, account) => {
@@ -73,11 +87,19 @@ massive(process.env.CONNECTION_STRING).then(db => {
 })
 
 
-app.post('/api/products', products_controller.create);
-app.get('/api/products', products_controller.getAll);
-app.get('/api/products/:id', products_controller.getOne);
-app.delete('/api/products/:id', products_controller.delete);
-app.put('/api/products/:id', products_controller.update)
+
+
+
+
+
+
+
+
+app.post('/api/products', auth.usersOnly, products_controller.create);
+app.get('/api/products', auth.usersOnly, products_controller.getAll);
+app.get('/api/products/:id', auth.usersOnly, products_controller.getOne);
+app.delete('/api/products/:id', auth.usersOnly, products_controller.delete);
+app.put('/api/products/:id', auth.usersOnly,  products_controller.update)
 
 
 app.listen(5050, () => {

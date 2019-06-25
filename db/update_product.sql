@@ -1,3 +1,3 @@
 UPDATE product
-SET description = $2
+SET name = $2
 WHERE product_id = $1;

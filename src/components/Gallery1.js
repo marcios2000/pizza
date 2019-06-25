@@ -117,7 +117,7 @@ const PHOTO_SET = [{
     width: 4,
     height: 3
 },{
-    src: 'https://pizzaplace2000.s3.us-east-2.amazonaws.com/pizza23.jpg',
+    src: 'https://pizzaplace2000.s3.us-east-2.amazonaws.com/pizza24.png',
     width: 4,
     height: 3
 }
