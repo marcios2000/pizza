@@ -1,6 +1,8 @@
 
 .navegation {
-  width: auto;
+  /* position: fixed; */
+  z-index: 900;
+  width: 100%;
   height: 15vh;
   background-color: red;
   display: flex;

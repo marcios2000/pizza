@@ -1,6 +1,7 @@
 import React,{ Component} from 'react'
 import '../register.css'
 import Header from './Header';
+import ShoppingCart from '../ShoppingCart/ShoppingCart';
 
 
 class OrderOnline extends Component {
@@ -23,6 +24,7 @@ class OrderOnline extends Component {
       return (
         <div className="App">
           <Header user={user} updateUser={this.updateUser} />
+          <ShoppingCart />
           
         </div>
       );

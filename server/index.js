@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: false}))
 
 // app.use(session({
 //     secret: process.env.SESSION_SECRET,
-//     saveUninitialized: false,
+//     saveUninitialized: true,
 //     resave: true
     
 // }))
@@ -29,7 +29,7 @@ app.use(session({
     saveUninitialized: false,
     resave: false,
     cookie: {
-        maxAge: 1000 * 60 * 60 * 24 * 7
+        maxAge: 1000 * 60 * 60 * 24 * 7 * 1
     }
 }))
 
@@ -38,7 +38,7 @@ app.post('/auth/login', authController.login)
 app.get('/auth/logout', authController.logout)
 
 
-app.get('')
+
 
 app.post('/api/form', (req, res) => {
     nodemailer.createTestAccount((err, account) => {
