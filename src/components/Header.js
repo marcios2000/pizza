@@ -10,7 +10,7 @@ export default class Header extends Component {
       username: '',
       password: '',
       isAdmin: false,
-      loggedin: false
+      // loggedin: false
     };
     this.register = this.register.bind(this);
     this.login = this.login.bind(this);
@@ -68,7 +68,7 @@ export default class Header extends Component {
     const { user } = this.props;
     return (
         <div className="Header">
-        {this.state.loggedin && <Redirect to="/products" />}
+        {/* {this.state.loggedin && <Redirect to="/products" />} */}
         <div className="title">DEV PIZZA</div>
         {user.username ? (
           <div className="welcomeMessage">

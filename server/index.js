@@ -5,14 +5,16 @@ const massive = require('massive');
 require ('dotenv').config();
 const session = require('express-session');
 const authController = require('./controllers/authController')
-const products_controller = require("./controllers/products_controller")
+// const products_controller = require("./controllers/products_controller")
 const cors = require('cors')
 const auth = require('./middleware/authMiddleware')
+const pizzaController = require('./controllers/pizzaController')
+const galleryController = require('./controllers/galleryController')
 
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use(bodyParser.json());
+
 app.use(bodyParser.urlencoded({ extended: false}))
 
 // app.use(session({
@@ -88,6 +90,19 @@ massive(process.env.CONNECTION_STRING).then(db => {
 
 
 
+//Pizza
+
+app.post('/api/pizza', pizzaController.create);
+app.get('/api/pizza', pizzaController.getAll);
+app.get('/api/pizza/:id', pizzaController.getOne);
+app.put('/api/pizza/:id', pizzaController.update);
+app.delete('/api/pizza/:id', pizzaController.delete);
+
+
+//gallery
+
+app.post('/api/gallery', galleryController.create)
+app.get('/api/gallery', galleryController.getAll)
 
 
 
@@ -95,11 +110,11 @@ massive(process.env.CONNECTION_STRING).then(db => {
 
 
 
-app.post('/api/products', auth.usersOnly, products_controller.create);
-app.get('/api/products', auth.usersOnly, products_controller.getAll);
-app.get('/api/products/:id', auth.usersOnly, products_controller.getOne);
-app.delete('/api/products/:id', auth.usersOnly, products_controller.delete);
-app.put('/api/products/:id', auth.usersOnly,  products_controller.update)
+// app.post('/api/products', auth.usersOnly, products_controller.create);
+// app.get('/api/products', auth.usersOnly, products_controller.getAll);
+// app.get('/api/products/:id', auth.usersOnly, products_controller.getOne);
+// app.delete('/api/products/:id', auth.usersOnly, products_controller.delete);
+// app.put('/api/products/:id', auth.usersOnly,  products_controller.update)
 
 
 app.listen(5050, () => {
