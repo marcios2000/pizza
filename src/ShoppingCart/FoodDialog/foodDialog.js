@@ -37,6 +37,19 @@ export const DialogFooter = styled.div`
   justify-content: center;
 `;
 
+export const ConfirmButton2 = styled(Title)`
+  margin: 10px;
+  color: white;
+  height: 55px;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  width: 200px;
+  cursor: pointer;
+  background-color: ${pizzaRed};
+ 
+`;
+
 export const ConfirmButton = styled(Title)`
   margin: 10px;
   color: white;

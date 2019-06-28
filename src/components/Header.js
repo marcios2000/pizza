@@ -2,105 +2,38 @@ import React, { Component } from 'react';
 import {Redirect} from "react-router-dom"
 import axios from 'axios'
 import '../Header.css'
+import styled from "styled-components";
 
-export default class Header extends Component {
-  constructor() {
-    super();
-    this.state = {
-      username: '',
-      password: '',
-      isAdmin: false,
-      // loggedin: false
-    };
-    this.register = this.register.bind(this);
-    this.login = this.login.bind(this);
-    this.logout = this.logout.bind(this);
-  }
-
-  handleUsernameInput(value) {
-    this.setState({ username: value });
-  }
-
-  handlePasswordInput(value) {
-    this.setState({ password: value });
-  }
-
-  toggleAdmin() {
-    const { isAdmin } = this.state;
-    this.setState({ isAdmin: !isAdmin });
-  }
-
-  login() {
-    const { username, password } = this.state;
-    axios
-    .post('/auth/login', { username , password })
-    .then(user => {
-      this.props.updateUser(user.data);
-      this.setState({username: '', password: ''})
-      this.setState({loggedin: true})  
-    }).catch(error => alert(error.response.request.response))
-  }
-
-  register() {
-    const { username, password, isAdmin } = this.state;
-    axios
-      .post('/auth/register', {username, password, isAdmin})
-      .then(user => {
-        this.setState({username: '', password: ''})
-        this.props.updateUser(user.data);
-      })
-      .catch(err => {
-        this.setState({ username: '', password: '' })
-        alert(err.response.request.response)
-    })
-  }
-
-  logout() {
-    axios
-    .get('/auth/logout')
-    .then(() => {
-      this.props.updateUser({})
-    }).catch(error => console.log(error))
-  }
-
-  render() {
-    const { username, password } = this.state;
-    const { user } = this.props;
-    return (
-        <div className="Header">
-        {/* {this.state.loggedin && <Redirect to="/products" />} */}
-        <div className="title">DEV PIZZA</div>
-        {user.username ? (
-          <div className="welcomeMessage">
-            <h4>{user.username},WELCOME TO DEV PIZZA</h4>
-            <button type="submit" onClick={this.logout}>
-              Logout
-            </button>
-          </div>
+function Header ({login, loggedIn, logout}) {
+    
+  return (
+          <div className="Header">
+          
+          <div className="title">DEV PIZZA</div>
+          
+            <div className="loginContainer">
+              <div className='userStatus'>
+              {loggedIn !== "loading" ? (
+          <>
+            👤 {loggedIn ? `Welcome ${loggedIn.displayName} you are Logged in!` : ""}
+            {loggedIn ? (
+              <button onClick={logout}> Log out </button>
+            ) : (
+              <button onClick={login}> Log in / Sign up </button>
+            )}
+          </>
         ) : (
-          <div className="loginContainer">
-            <input
-              type="text"
-              placeholder="Username"
-              value={username}
-              onChange={e => this.handleUsernameInput(e.target.value)}
-            />
-            <input
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={e => this.handlePasswordInput(e.target.value)}
-            />
-            <div className="adminCheck">
-              <input type="checkbox" id="adminCheckbox" onChange={() => this.toggleAdmin()} /> <span> Admin </span>
-            </div>
-            <button onClick={this.login}>Log In</button>
-            <button onClick={this.register} id="reg">
-              Register
-            </button>
-          </div>
+          "loading..."
         )}
-      </div>
-    );
+              </div>
+            </div>
+          </div>
+          )
+      
+  
+  
+  
+  
+      
   }
-}
+  export default Header

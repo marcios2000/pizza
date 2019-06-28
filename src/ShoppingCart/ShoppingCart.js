@@ -8,18 +8,27 @@ import { Order } from "./Menu/order"
 import { useOpenFood } from "./Hooks/useOpenFood";
 import { useOrders } from "./Hooks/useOrders";
 import { useTitle } from "./Hooks/useTitle";
+import {useAuthentication} from './Hooks/useAuthentication'
+import Header from '../components/Header'
+
+
+
 
 function ShoppingCart() {
   const openFood = useOpenFood();
   const orders = useOrders();
+  const auth = useAuthentication()
   useTitle({ ...openFood, ...orders });
+
+  
 
   return (
     <>
       <GlobalStyle />
       <FoodDialog {...openFood} {...orders} />
-      {/* <Navbar /> */}
-      <Order {...orders} {...openFood} />
+      <Header {...auth}/>
+      {/* <Navbar {...auth} /> */}
+      <Order {...orders} {...openFood} {...auth} />
       <Banner />
       <Menu {...openFood} />
     </>

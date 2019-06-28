@@ -23,7 +23,7 @@ class OrderOnline extends Component {
       const { user } = this.state;
       return (
         <div className="App">
-          <Header user={user} updateUser={this.updateUser} />
+          {/* <Header user={user} updateUser={this.updateUser} /> */}
           <ShoppingCart />
           
         </div>

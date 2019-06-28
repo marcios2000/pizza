@@ -19,6 +19,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    
   }
   
   .Header input,
@@ -78,4 +79,10 @@
 
   .home {
       background-color: red
+  }
+
+  .userStatus {
+    color: white;
+    font-size: 23px;
+    margin-right: 30px
   }
