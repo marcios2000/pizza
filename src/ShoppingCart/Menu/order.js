@@ -9,7 +9,13 @@ import {
 } from "../FoodDialog/foodDialog";
 import { formatPrice } from "../PizzaData";
 import { getPrice } from "../FoodDialog/foodDialog";
+import StripeCheckout from 'react-stripe-checkout'
+import { toast } from "react-toastify";
+import axios from "axios";
+import "react-toastify/dist/ReactToastify.css";
 const database = window.firebase.database();
+
+toast.configure();
 
 const OrderStyled = styled.div`
   position: fixed;
@@ -99,6 +105,9 @@ export function Order({ orders, setOrders, setOpenFood, login, loggedIn, setOpen
     setOrders(newOrders);
   };
 
+  async function handleToken(token, addresses) {
+    toast("Success! Check email for details")
+  }
   return (
     <OrderStyled>
       {orders.length === 0 ? (
@@ -162,8 +171,17 @@ export function Order({ orders, setOrders, setOpenFood, login, loggedIn, setOpen
           } else {
             login();
           }
-        }}>Checkout</ConfirmButton2>
+        }}><StripeCheckout
+        stripeKey="pk_test_bMyfHqeaAIaSHGXqYhc9sm4P009rRQDsPl"
+        token={handleToken}
+        billingAddress
+        shippingAddress
+        amount={total * 100} /></ConfirmButton2>
+        
       </DialogFooter> 
     </OrderStyled>
   );
+}
+function handleToken(token, addresses) {
+  
 }

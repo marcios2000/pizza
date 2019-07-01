@@ -1,1 +1,1 @@
-INSERT INTO gallery ( img, width, height, price, section ) VALUES ( $1, $2, $3, $4, $5);
+INSERT INTO gallery ( img, width, height, price, section ) VALUES ( $1, $2, $3, $4, $5)

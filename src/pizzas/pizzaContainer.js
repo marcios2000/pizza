@@ -8,22 +8,12 @@ import PizzaTable from './pizzaTable';
 
 
 export class PizzaContainer extends Component {
-    constructor(props) {
-        super(props)
-    }
-
-    // Todo Container methods dispatch the actions to the reducer functions. Ordered by CRUD Order
-
-    //Create
+   
     createPizza = (pizza) => {
         this.props.actions.CreatePizza(pizza)
     }
 
 
-    // No methods for reading, the first loading of data is done in App.js where the
-    // getTodo Action is dispatched
-
-    //Update
     startEditing = (id) => {
         this.props.actions.StartEditing(id)
     }
@@ -59,14 +49,13 @@ export class PizzaContainer extends Component {
     }
 }
 
-// Define the property types of this Container Component
+
 
 PizzaContainer.propTypes = {
     actions: PropTypes.object.isRequired,
     pizzas: PropTypes.array.isRequired
 }
 
-// This maps the state to the property of the component
 
 function mapStateToProps(state, ownProps) {
     return {
@@ -74,7 +63,7 @@ function mapStateToProps(state, ownProps) {
     }
 }
 
-// This maps the dispatch to the property of the component
+
 
 function mapDispatchToProps(dispatch) {
     return {
@@ -82,7 +71,5 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
-// The connect function connects the Redux Dispatch and state to the Todo Container Component.
-// Without this the Component wont be functional.
 
 export default connect(mapStateToProps, mapDispatchToProps)(PizzaContainer);

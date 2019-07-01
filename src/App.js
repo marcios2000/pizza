@@ -2,9 +2,10 @@ import React from 'react';
 import { HashRouter} from 'react-router-dom';
 import { Provider} from 'react-redux'
 import routes from './routes'
-import Nav from './components/Nav'
+
 import './reset.css'
 import './App.css'
+import Navbar from './components/Navbar';
 
 
 function App() {
@@ -12,7 +13,7 @@ function App() {
     <div>
     <HashRouter>
       <div className="App">
-      <Nav />
+      <Navbar />
       {routes}
       </div>
         
