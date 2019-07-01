@@ -9,7 +9,7 @@ export default function DropDown(props) {
       <div className="close-menu-button" onClick={props.closeMenu}>
         X
       </div>
-      <Link to='/menu' className='button1' >Menu</Link>
+                    <Link to='/menu' className='button1' >Menu</Link>
                     <Link to='/gallery' className='button1' >Gallery</Link>
                     <Link to='/reservation' className='button1'>Reservation</Link>
                     <Link to="/contact" className='button1'>Contact</Link>
