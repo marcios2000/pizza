@@ -8,9 +8,9 @@ import Reservation from './components/Reservation'
 import Contact from './components/Contact'
 import OrderOnline from "./components/Orderonline";
 import ShoppingCart from './ShoppingCart/ShoppingCart'
-import AdminHome from './components/admin/authentication/home'
-import Login from './components/admin/authentication/login'
-import Logout from './components/admin/authentication/logout'
+// import AdminHome from './components/admin/authentication/home'
+// import Login from './components/admin/authentication/login'
+// import Logout from './components/admin/authentication/logout'
 
 
 
@@ -22,10 +22,12 @@ export default (
         <Route exact path='/menu' component={Menu} />
         <Route exact path='/gallery' component={Gallery1} />
         <Route exact path='/' component={Home} />
-        <Route exact path='/reservation' component={Reservation} />
+        <Route exact path='/admin' component={Reservation} />
         <Route exact path='/contact' component={Contact} />
         <Route exact path='/orderonline' component={OrderOnline} />
         <Route exact path='/pizza' component={ShoppingCart} />
+       
+        
         
        
         

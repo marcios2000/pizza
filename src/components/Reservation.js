@@ -4,6 +4,7 @@ import Products from './products';
 import Food from './Food/Food';
 import PizzaApp from '../PizzaApp'
 import DbClickToSelectTable from './text'
+import Orders from './Orders';
 
 
 
@@ -15,6 +16,7 @@ class Reservation extends Component {
                
             </div>
            <DbClickToSelectTable />
+           <Orders />
             
             </div>
         )
