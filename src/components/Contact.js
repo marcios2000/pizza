@@ -1,8 +1,11 @@
 import React,{ Component} from 'react'
 import { Form, FormGroup, Input, Label, Button} from 'reactstrap'
 import axios from 'axios' 
+import { toast } from "react-toastify";
 
-
+async function handleToken(token, addresses) {
+    toast("Success! Check email for details")
+  }
 class Contact extends Component {
     constructor () {
         super();
@@ -22,17 +25,22 @@ class Contact extends Component {
     async handleSubmit(e) {
         e.preventDefault()
         this.setState({name: '', email: '', message: ''})
-
+       toast("Success! Check email for details")
         const { name, email, message, } = this.state
 
         const form = await axios.post('/api/form', {
             name, 
             email,
             message
-        })
+        }) 
         
         
+        
+       
     }
+
+    
+      
     render() {
         return (<div>
             <div className="gallery">
@@ -75,7 +83,7 @@ class Contact extends Component {
                         value={this.state.message}/>
                 </FormGroup>
 
-                <Button>Submit</Button>
+                <Button >Submit</Button>
             </Form>
             </div>
             </div>

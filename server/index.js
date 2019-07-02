@@ -7,6 +7,7 @@ const session = require('express-session');
 const cors = require('cors')
 const pizzaController = require('./controllers/pizzaController')
 const galleryController = require('./controllers/galleryController')
+const customerController = require('./controllers/customerController')
 const ordersController = require('./controllers/ordersController')
 // const stripe = require("stripe")("pk_test_bMyfHqeaAIaSHGXqYhc9sm4P009rRQDsPl");
 const uuid = require("uuid/v4");
@@ -100,6 +101,16 @@ app.get('/api/orders', ordersController.getAll);
 app.get('/api/orders/:id', ordersController.getOne);
 app.put('/api/orders/:id', ordersController.update);
 app.delete('/api/orders/:id', ordersController.delete);
+
+//customers
+
+app.post('/api/customers', customerController.create);
+app.get('/api/customers', customerController.getAll);
+app.get('/api/customers/:id', customerController.getOne);
+app.put('/api/customers/:id', customerController.update);
+app.delete('/api/customers/:id', customerController.delete);
+
+
 
 
 

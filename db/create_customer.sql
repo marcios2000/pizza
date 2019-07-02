@@ -1,0 +1,1 @@
+INSERT INTO customer ( name, address, phone ) VALUES ( $1, $2, $3 );
