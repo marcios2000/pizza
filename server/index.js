@@ -11,6 +11,7 @@ const customerController = require('./controllers/customerController')
 const ordersController = require('./controllers/ordersController')
 // const stripe = require("stripe")("pk_test_bMyfHqeaAIaSHGXqYhc9sm4P009rRQDsPl");
 const uuid = require("uuid/v4");
+const path = require('path');
 
 const app = express();
 app.use(cors());
@@ -166,7 +167,11 @@ app.post("/api/checkout", async (req, res) => {
     res.json({ error, status });
   });
 
+  // Usually moved to the start of file
 
+  app.get('*', (req, res)=>{
+      res.sendFile(path.join(__dirname, '../build/index.html'));
+  });
 
 
 // app.post('/api/products', auth.usersOnly, products_controller.create);
