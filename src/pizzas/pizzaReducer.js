@@ -24,11 +24,11 @@ export function PizzaListReducer(state = [], action) {
         }
             
         //Read    
-        case PizzaActions.GET_PIZZAS_SUCCESS: {
+        // case PizzaActions.GET_PIZZAS_SUCCESS: {
             
-            return action.pizzas.data.data.docs;
+        //     return action.pizzas.data.data.docs;
 
-        }
+        // }
         
         // The following Cases handle the data by mapping it. Mostly because they are related with the modification of a single Data
         

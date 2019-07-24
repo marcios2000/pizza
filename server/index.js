@@ -73,11 +73,14 @@ app.post('/api/form', (req, res) => {
             console.log('Message URL: %s', nodemailer.getTestMessageUrl(info))
            
         })
-    })  
-    res.sendtatus(200)
-})
-
-
+      })  
+      res.sendtatus(200)
+    })
+    
+    
+    app.get('*', (req, res)=>{
+        res.sendFile(path.join(__dirname, '../build/index.html'));
+    });
 massive(process.env.CONNECTION_STRING).then(db => {
     app.set('db', db);
     console.log('Database Connected');
@@ -169,9 +172,6 @@ app.post("/api/checkout", async (req, res) => {
 
   // Usually moved to the start of file
 
-  app.get('*', (req, res)=>{
-      res.sendFile(path.join(__dirname, '../build/index.html'));
-  });
 
 
 // app.post('/api/products', auth.usersOnly, products_controller.create);
